@@ -49,8 +49,8 @@ Puis, dans Claude Code :
 2. Augmenter le numéro de version (par exemple `0.1.0` → `0.2.0`) dans **les deux** fichiers, avec la même valeur :
    - `plugins/mes-skills/.claude-plugin/plugin.json`
    - `.claude-plugin/marketplace.json`
-3. Ajouter la skill au tableau ci-dessous.
-4. Commit et push :
+3. Ajouter la skill au tableau ci-dessous, et une ligne datée dans `CHANGELOG.md`.
+4. Commit et push (avec Claude, suivre le parcours de `CLAUDE.md`, qui demande un accord avant cette étape) :
 
    ```
    git add .

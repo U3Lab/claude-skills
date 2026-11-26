@@ -12,19 +12,22 @@ Ce dépôt est une marketplace de plugins et de skills Claude. Les personnes qui
 
 1. **Synchroniser** : récupère la dernière version du dépôt (`git pull`) avant de toucher à quoi que ce soit.
 2. **Modifier** : fais uniquement les changements demandés, dans le skill concerné.
-3. **Incrémenter la version** du skill modifié (voir section suivante). Cette étape est obligatoire, même pour une simple virgule.
-4. **Mettre à jour le changelog** : une ligne datée qui décrit le changement.
+3. **Incrémenter la version** du plugin qui contient le skill modifié (voir section suivante). Cette étape est obligatoire, même pour une simple virgule.
+4. **Mettre à jour le changelog** (`CHANGELOG.md`, à la racine) : une ligne datée qui décrit le changement. Si un skill est ajouté, renommé, supprimé ou change de rôle, mettre aussi à jour le tableau des skills dans `README.md`.
 5. **Vérifier** : recopie la checklist ci-dessous dans ta réponse et coche chaque case.
 6. **Résumer et demander accord** : explique en 3 à 5 lignes simples ce qui a changé, indique l'ancien et le nouveau numéro de version, puis attends mon « ok » explicite.
 7. **Commit et envoi** : une fois l'accord reçu, fais le commit directement sur `main` avec un message clair, puis envoie-le sur GitHub (`git push`).
 
 ## La règle de version
 
-**Où se trouve le numéro :** `[À ADAPTER : chemin exact du fichier, ex. .claude-plugin/plugin.json ou frontmatter du SKILL.md]`
+**Où se trouve le numéro :** il n'y a pas de version par skill, mais une version pour tout le plugin. Pour `mes-skills`, elle est écrite à deux endroits, qui doivent toujours être identiques :
 
-**Quand l'incrémenter :** toujours, dès qu'un fichier du skill change. Aucune exception.
+- `plugins/mes-skills/.claude-plugin/plugin.json` (champ `version`)
+- `.claude-plugin/marketplace.json` (champ `version` de l'entrée `mes-skills`)
 
-**De combien :**
+**Quand l'incrémenter :** toujours, dès qu'un fichier d'un skill du plugin change. Aucune exception.
+
+**De combien :** 
 
 | Type de changement | Exemple | Numéro |
 |---|---|---|
@@ -34,15 +37,16 @@ Ce dépôt est une marketplace de plugins et de skills Claude. Les personnes qui
 
 Si tu hésites entre deux niveaux, **pose-moi la question** avant de choisir.
 
-Ne modifie jamais le numéro de version d'un skill que tu n'as pas touché.
+Ne modifie jamais le numéro de version d'un plugin dont tu n'as touché aucun skill.
 
 ## Checklist avant commit
 
 Recopie et coche dans ta réponse :
 
 - [ ] J'ai fait un `git pull` avant de commencer
-- [ ] La version du skill modifié a été incrémentée (ancienne → nouvelle : ...)
-- [ ] Le changelog contient une ligne pour ce changement
+- [ ] La version du plugin a été incrémentée, à l'identique dans `plugin.json` et `marketplace.json` (ancienne → nouvelle : ...)
+- [ ] `CHANGELOG.md` contient une ligne pour ce changement
+- [ ] Le tableau des skills dans `README.md` est à jour
 - [ ] Le skill a toujours son `SKILL.md` avec un frontmatter valide (name, description)
 - [ ] Aucun fichier parasite n'est inclus (brouillons, fichiers temporaires, `.DS_Store`)
 - [ ] J'ai résumé les changements en langage simple et reçu un « ok »
